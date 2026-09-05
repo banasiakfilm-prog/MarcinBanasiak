@@ -205,13 +205,13 @@
     <section id="about" class="py-24 px-6 sm:px-12 bg-neutral-50 border-y border-neutral-200/80">
       <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         
-        <!-- Portrait Frame with Updated Google Drive Image -->
+        <!-- Portrait Frame with GitHub Repository Image -->
         <div class="lg:col-span-5 relative">
           <div class="aspect-[4/5] w-full bg-white border border-neutral-200 rounded-sm overflow-hidden shadow-sm">
-            <img src="https://lh3.googleusercontent.com/d/1QewNP2NaTquM4X2_ekxay1JbpP9nT4_i"
+            <img src="images/background.webp"
                  alt="Marcin Banasiak Cinematographer"
                  class="w-full h-full object-cover contrast-105 hover:scale-[1.02] transition-all duration-700"
-                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1200&auto=format&fit=crop';" />
+                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/banasiakfilm-prog/MarcinBanasiak/main/images/background.webp';" />
           </div>
           <div class="mt-4 text-[11px] font-mono text-neutral-400 tracking-wider flex justify-between">
             <span>AFI Conservatory MFA (Los Angeles)</span>
@@ -475,7 +475,7 @@
   <!-- ==================== JAVASCRIPT ==================== -->
   <script>
     // Exact Projects Sequence
-    // All video links hosted on Vimeo for flawless playback without cross-origin errors
+    // Images linked to the GitHub repository folder (images/) with raw URL fallbacks
     const projects = [
       {
         id: 'sin-cielo',
@@ -486,8 +486,8 @@
         videoType: 'vimeo',
         videoId: '1224217224',
         videoUrl: 'https://vimeo.com/1224217224',
-        thumb: 'https://lh3.googleusercontent.com/d/1iTwbAbE8kbig0FhGrGlL8_FYF90DKeLy',
-        fallbackThumb: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop',
+        thumb: 'images/sin_cielo.webp',
+        fallbackThumb: 'https://raw.githubusercontent.com/banasiakfilm-prog/MarcinBanasiak/main/images/sin_cielo.webp',
         description: 'Directed by Jianna Maarten Saada. A haunting, lyrical narrative set along the US-Mexico border borderlands. Grand Jury Prize at Seattle International Film Festival and Bruce Corwin Award at Santa Barbara International Film Festival.'
       },
       {
@@ -498,8 +498,8 @@
         filterGroup: 'doc-feature',
         videoType: 'vimeo-url',
         videoUrl: 'https://vimeo.com/marcinbanasiak/unlistedteaser',
-        thumb: 'https://lh3.googleusercontent.com/d/1t_p1ozZo8lY-rL4w8o5yMohd-tI5bQWP',
-        fallbackThumb: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1200&auto=format&fit=crop',
+        thumb: 'images/surzhyk.webp',
+        fallbackThumb: 'https://raw.githubusercontent.com/banasiakfilm-prog/MarcinBanasiak/main/images/surzhyk.webp',
         description: 'Documentary following Ukrainian civilians and volunteers living in frontline zones across the Kharkiv region during the war. Accompanied by photo exhibitions at Freedom Games Łódź. Recognized with civilian volunteer medals for courage.'
       },
       {
@@ -534,8 +534,8 @@
         filterGroup: 'ai',
         videoType: 'vimeo-url',
         videoUrl: 'https://vimeo.com/marcinbanasiak',
-        thumb: 'https://lh3.googleusercontent.com/d/10FajKhdMgAQiojdF9_wG9V7YIJgWLa3r',
-        fallbackThumb: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1200&auto=format&fit=crop',
+        thumb: 'images/she_who_walks_between.webp',
+        fallbackThumb: 'https://raw.githubusercontent.com/banasiakfilm-prog/MarcinBanasiak/main/images/she_who_walks_between.webp',
         description: 'An AI Short exploring mythological archetypes through recursive temporal synthesis, dream logic, and surreal architectural spaces.'
       },
       {
@@ -560,8 +560,8 @@
         videoId: '1192984086',
         videoHash: 'b150ba0bcf',
         videoUrl: 'https://vimeo.com/1192984086/b150ba0bcf',
-        thumb: 'https://lh3.googleusercontent.com/d/1ccDWtDJ1LhKq2nq6VidmlQojb0VNIhsy',
-        fallbackThumb: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1200&auto=format&fit=crop',
+        thumb: 'images/candy_ai.jpeg',
+        fallbackThumb: 'https://raw.githubusercontent.com/banasiakfilm-prog/MarcinBanasiak/main/images/candy_ai.jpeg',
         description: 'An AI Short exploring digital persona, artificial warmth, and contemporary synthetic portraiture with cinematic lighting.'
       },
       {
@@ -572,8 +572,8 @@
         filterGroup: 'ai',
         videoType: 'vimeo-url',
         videoUrl: 'https://vimeo.com/marcinbanasiak',
-        thumb: 'https://lh3.googleusercontent.com/d/114peClhBG-xZ5yg40seV4cJ4SZEHPhj9',
-        fallbackThumb: 'https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1200&auto=format&fit=crop',
+        thumb: 'images/william_wood.png',
+        fallbackThumb: 'https://raw.githubusercontent.com/banasiakfilm-prog/MarcinBanasiak/main/images/william_wood.png',
         description: 'A stylized AI Commercial blending historical narrative textures with fantastical visual discovery.'
       },
       {
@@ -585,8 +585,8 @@
         videoType: 'imdb',
         videoId: 'vi1003210521',
         videoUrl: 'https://www.imdb.com/video/vi1003210521/?playlistId=tt6643984&ref_=ext_shr_lnk',
-        thumb: 'https://lh3.googleusercontent.com/d/1aDSzMd5X6MFChkbetV2xh0c5praFnqO6',
-        fallbackThumb: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1200&auto=format&fit=crop',
+        thumb: 'images/allnighter.webp',
+        fallbackThumb: 'https://raw.githubusercontent.com/banasiakfilm-prog/MarcinBanasiak/main/images/allnighter.webp',
         description: 'Feature film directed by Aimee Graham, starring Justine Bateman and David Koechner. Photographed with RED Monstro 8K and anamorphic glass on location in Los Angeles.'
       },
       {
@@ -684,8 +684,8 @@
         filterGroup: 'short',
         videoType: 'vimeo-url',
         videoUrl: 'https://vimeo.com/marcinbanasiak',
-        thumb: 'https://lh3.googleusercontent.com/d/1Y75ZHCmC0jFhiOXGIC3FnMtC8OIbk2PB',
-        fallbackThumb: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop',
+        thumb: 'images/richard.webp',
+        fallbackThumb: 'https://raw.githubusercontent.com/banasiakfilm-prog/MarcinBanasiak/main/images/richard.webp',
         description: 'Narrative short exploring character solitude and nuanced interior lighting.'
       },
       {
@@ -729,7 +729,7 @@
     ];
 
     // Explicit list of Vimeo IDs that fetch their thumbnail dynamically via oEmbed
-    // Only includes projects where the thumbnail isn't already supplied via direct Google Drive link
+    // Only includes projects where the thumbnail isn't already supplied via direct GitHub repository images
     const vimeoOembedProjects = [
       'polestar',
       'opaque',
