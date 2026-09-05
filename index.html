@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marcin Banasiak — Cinematographer & AI Filmmaker</title>
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            serif: ['Newsreader', 'Playfair Display', 'Georgia', 'serif'],
+          },
+          letterSpacing: {
+            'tightest': '-0.03em',
+            'cinema': '0.14em',
+            'ultra-wide': '0.22em',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* Clean minimal scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #ffffff;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #e2e2e2;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #c0c0c0;
+    }
+
+    .aspect-cinema {
+      aspect-ratio: 2.39 / 1;
+    }
+    .aspect-reel {
+      aspect-ratio: 16 / 9;
+    }
+
+    /* Minimalist image hover transition */
+    .project-card:hover .project-thumb {
+      transform: scale(1.03);
+    }
+  </style>
+  <!-- Vimeo Player API -->
+  <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body class="bg-white text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white transition-colors duration-200">
+
+  <!-- ==================== MINIMALIST NAVIGATION ==================== -->
+  <header class="fixed top-0 left-0 w-full z-40 bg-white/95 backdrop-blur-sm border-b border-neutral-100 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 sm:px-12 h-20 sm:h-24 flex items-center justify-between">
+      
+      <!-- Wordmark -->
+      <a href="#showreel" class="group flex flex-col">
+        <span class="text-lg sm:text-xl font-medium tracking-cinema uppercase text-neutral-950 group-hover:opacity-60 transition-opacity">
+          Marcin Banasiak
+        </span>
+        <span class="text-[9px] sm:text-[10px] tracking-ultra-wide uppercase text-neutral-400 font-normal mt-0.5">
+          Cinematographer &bull; AI Filmmaker
+        </span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center space-x-9 text-xs uppercase tracking-ultra-wide font-medium">
+        <a href="#showreel" class="text-neutral-500 hover:text-black transition-colors">AI Showreel</a>
+        <a href="#work" class="text-neutral-500 hover:text-black transition-colors">Work</a>
+        <a href="#about" class="text-neutral-500 hover:text-black transition-colors">Background</a>
+        <a href="#resume" class="text-neutral-500 hover:text-black transition-colors">Resume</a>
+        <a href="#contact" class="text-neutral-500 hover:text-black transition-colors">Contact</a>
+
+        <!-- Quick Email Action -->
+        <button id="nav-copy-email" class="ml-4 px-3.5 py-1.5 rounded-full border border-neutral-200 hover:border-black text-[10px] tracking-widest text-neutral-700 hover:text-black transition-all">
+          banasiak.film@gmail.com
+        </button>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <div class="flex items-center md:hidden">
+        <button id="menu-btn" class="p-2 text-neutral-900 hover:text-neutral-600 focus:outline-none" aria-label="Toggle menu">
+          <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          </svg>
+          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-neutral-100 px-8 py-8 space-y-5 text-xs uppercase tracking-ultra-wide">
+      <a href="#showreel" class="block text-neutral-600 hover:text-black mobile-link">AI Showreel</a>
+      <a href="#work" class="block text-neutral-600 hover:text-black mobile-link">Work</a>
+      <a href="#about" class="block text-neutral-600 hover:text-black mobile-link">Background</a>
+      <a href="#resume" class="block text-neutral-600 hover:text-black mobile-link">Resume</a>
+      <a href="#contact" class="block text-neutral-600 hover:text-black mobile-link">Contact</a>
+      <div class="pt-4 border-t border-neutral-100 text-[11px] font-mono lowercase tracking-normal text-neutral-400">
+        <div>banasiak.film@gmail.com</div>
+        <div class="text-neutral-600 pt-1 font-mono">+48 506-172-787</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== HERO / AI SHOWREEL ==================== -->
+    <section id="showreel" class="pt-28 sm:pt-36 pb-16 px-6 sm:px-12 max-w-7xl mx-auto">
+      
+      <!-- Reel Title Header -->
+      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 mb-6">
+        <div>
+          <h1 class="text-xl sm:text-3xl font-light tracking-cinema uppercase text-neutral-900">
+            AI Showreel
+          </h1>
+          <p class="text-xs text-neutral-400 tracking-wider font-light mt-1">
+            Latent Diffusion &bull; ComfyUI Synthesis &bull; Anamorphic Optical Calibration
+          </p>
+        </div>
+        <div class="text-[11px] font-mono text-neutral-400 flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>4K Ultra HD &bull; 01:25</span>
+        </div>
+      </div>
+
+      <!-- Clean Widescreen Video Embed Frame -->
+      <div class="relative w-full aspect-reel bg-neutral-950 rounded-sm overflow-hidden shadow-xl border border-neutral-200">
+        <iframe src="https://player.vimeo.com/video/1142411923?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                class="absolute inset-0 w-full h-full"
+                frameborder="0" 
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                title="Marcin Banasiak AI Showreel">
+        </iframe>
+      </div>
+
+      <div class="mt-3 flex items-center justify-between text-[11px] font-mono text-neutral-400">
+        <span>Marcin Banasiak &mdash; Cinematographer &bull; AI Filmmaker</span>
+        <a href="https://vimeo.com/marcinbanasiak/aishowreel2025" target="_blank" rel="noopener noreferrer" class="hover:text-black transition-colors underline">
+          Open in Vimeo &nearr;
+        </a>
+      </div>
+    </section>
+
+    <!-- ==================== SELECTED WORK / GALLERY ==================== -->
+    <section id="work" class="py-16 px-6 sm:px-12 max-w-7xl mx-auto border-t border-neutral-200/80">
+      
+      <!-- Section Title & Category Filters -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-light tracking-cinema uppercase text-neutral-950">
+            Selected Work
+          </h2>
+          <p class="text-xs text-neutral-400 tracking-wider mt-1">
+            Shorts, Commercials, AI Films, Documentaries & Music Videos
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[11px] uppercase tracking-wider font-medium">
+          <button data-filter="all" class="filter-btn active px-3.5 py-1.5 rounded-full border border-black bg-black text-white transition-all">
+            All
+          </button>
+          <button data-filter="ai" class="filter-btn px-3.5 py-1.5 rounded-full border border-neutral-200 bg-white text-neutral-600 hover:border-black transition-all">
+            AI Filmmaking
+          </button>
+          <button data-filter="short" class="filter-btn px-3.5 py-1.5 rounded-full border border-neutral-200 bg-white text-neutral-600 hover:border-black transition-all">
+            Shorts
+          </button>
+          <button data-filter="commercial" class="filter-btn px-3.5 py-1.5 rounded-full border border-neutral-200 bg-white text-neutral-600 hover:border-black transition-all">
+            Commercials
+          </button>
+          <button data-filter="music" class="filter-btn px-3.5 py-1.5 rounded-full border border-neutral-200 bg-white text-neutral-600 hover:border-black transition-all">
+            Music Videos
+          </button>
+          <button data-filter="doc-feature" class="filter-btn px-3.5 py-1.5 rounded-full border border-neutral-200 bg-white text-neutral-600 hover:border-black transition-all">
+            Doc & Feature
+          </button>
+        </div>
+      </div>
+
+      <!-- Responsive Portfolio Grid -->
+      <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ==================== BACKGROUND & PHILOSOPHY ==================== -->
+    <section id="about" class="py-24 px-6 sm:px-12 bg-neutral-50 border-y border-neutral-200/80">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Portrait Frame with Updated Google Drive Image -->
+        <div class="lg:col-span-5 relative">
+          <div class="aspect-[4/5] w-full bg-white border border-neutral-200 rounded-sm overflow-hidden shadow-sm">
+            <img src="https://lh3.googleusercontent.com/d/1QewNP2NaTquM4X2_ekxay1JbpP9nT4_i"
+                 alt="Marcin Banasiak Cinematographer"
+                 class="w-full h-full object-cover contrast-105 hover:scale-[1.02] transition-all duration-700"
+                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1200&auto=format&fit=crop';" />
+          </div>
+          <div class="mt-4 text-[11px] font-mono text-neutral-400 tracking-wider flex justify-between">
+            <span>AFI Conservatory MFA (Los Angeles)</span>
+            <span>Fulbright Scholar</span>
+          </div>
+        </div>
+
+        <!-- Biography -->
+        <div class="lg:col-span-7 space-y-6">
+          <p class="text-xs uppercase tracking-ultra-wide text-neutral-400 font-semibold">
+            Cinematographer &bull; AI Filmmaker
+          </p>
+          <h3 class="text-3xl sm:text-4xl font-light tracking-tight text-neutral-950 font-serif italic">
+            "Cinematography expanded by code — exploring visual depth at the frontier of technology."
+          </h3>
+          <p class="text-neutral-600 leading-relaxed text-sm sm:text-base font-normal">
+            Born in Łódź, educated at Krzysztof Kieślowski Film School (Katowice) and the American Film Institute (AFI) Conservatory in Los Angeles (MFA Cinematography, Fulbright Scholar, 2017).
+          </p>
+          <p class="text-neutral-600 leading-relaxed text-sm sm:text-base font-normal">
+            With over 15 years photographing narrative features, award-winning documentaries, and commercial campaigns across Europe, North America, Asia, and Africa, my grounding in Computer Science (Lodz University of Technology) bridges organic optical craft with generative AI pipelines, ComfyUI, and bespoke latent workflows.
+          </p>
+
+          <!-- Key Metrics -->
+          <div class="grid grid-cols-3 gap-6 pt-6 border-t border-neutral-200">
+            <div>
+              <span class="block text-3xl font-light text-neutral-900 font-mono">15+</span>
+              <span class="text-[11px] uppercase tracking-wider text-neutral-400">Years Experience</span>
+            </div>
+            <div>
+              <span class="block text-3xl font-light text-neutral-900 font-mono">4</span>
+              <span class="text-[11px] uppercase tracking-wider text-neutral-400">Continents</span>
+            </div>
+            <div>
+              <span class="block text-3xl font-light text-neutral-900 font-mono">12+</span>
+              <span class="text-[11px] uppercase tracking-wider text-neutral-400">Festival Honors</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== RESUME / FILMOGRAPHY ==================== -->
+    <section id="resume" class="py-20 px-6 sm:px-12 max-w-7xl mx-auto">
+      <div class="mb-14">
+        <h2 class="text-2xl sm:text-3xl font-light tracking-cinema uppercase text-neutral-950">
+          Selected Filmography & Accolades
+        </h2>
+        <p class="text-xs text-neutral-400 tracking-wider mt-1">
+          Narrative, Documentary, Commercials & Honors
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 text-sm">
+        
+        <!-- Column 1: AI & Commercials -->
+        <div class="space-y-6">
+          <div class="border-b border-neutral-200 pb-2 flex items-center justify-between text-xs tracking-ultra-wide uppercase font-semibold text-neutral-900">
+            <span>AI & Commercial</span>
+            <span class="text-neutral-400 text-[10px]">2019–2025</span>
+          </div>
+          <ul class="space-y-5 text-neutral-600">
+            <li>
+              <div class="font-medium text-neutral-950">Polestar – Silence That Moves You (2025)</div>
+              <div class="text-xs text-neutral-400">AI Commercial &bull; Director &bull; AI Artist</div>
+            </li>
+            <li>
+              <div class="font-medium text-neutral-950">70 Moments (2024)</div>
+              <div class="text-xs text-neutral-400">AI Short &bull; Director &bull; AI Artist</div>
+            </li>
+            <li>
+              <div class="font-medium text-neutral-950">Maserati – Perception</div>
+              <div class="text-xs text-neutral-400">Commercial &bull; Cinematographer</div>
+            </li>
+            <li>
+              <div class="font-medium text-neutral-950">Evil Geniuses Series (AMD Ryzen &bull; Xfinity)</div>
+              <div class="text-xs text-neutral-400">Commercials &bull; Cinematographer</div>
+            </li>
+            <li>
+              <div class="font-medium text-neutral-950">L.U.C & Motion Trio feat. Ania Rusowicz</div>
+              <div class="text-xs text-neutral-400">Music Video &bull; Cinematographer</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Narrative Features & Series -->
+        <div class="space-y-6">
+          <div class="border-b border-neutral-200 pb-2 flex items-center justify-between text-xs tracking-ultra-wide uppercase font-semibold text-neutral-900">
+            <span>Narrative & Shorts</span>
+            <span class="text-neutral-400 text-[10px]">Narrative</span>
+          </div>
+          <ul class="space-y-5 text-neutral-600">
+            <li>
+              <div class="font-medium text-neutral-950">Sin Cielo (2018)</div>
+              <div class="text-xs text-neutral-400">Short &bull; Cinematographer &bull; Seattle IFF Grand Jury Prize</div>
+            </li>
+            <li>
+              <div class="font-medium text-neutral-950">The Allnighter (2023)</div>
+              <div class="text-xs text-neutral-400">Feature Film &bull; Cinematographer &bull; Dir. Aimee Graham</div>
+            </li>
+            <li>
+              <div class="font-medium text-neutral-950">His Mother (2019)</div>
+              <div class="text-xs text-neutral-400">Short &bull; Cinematographer &bull; HollyShorts &bull; Rhode Island IFF</div>
+            </li>
+            <li>
+              <div class="font-medium text-neutral-950">Skater</div>
+              <div class="text-xs text-neutral-400">Short &bull; Cinematographer</div>
+            </li>
+            <li>
+              <div class="font-medium text-neutral-950">When the Light of Dawn Arises</div>
+              <div class="text-xs text-neutral-400">Short &bull; Cinematographer &bull; Gdynia Film Festival Jury Prize</div>
+            </li>
+            <li>
+              <div class="font-medium text-neutral-950">Richard</div>
+              <div class="text-xs text-neutral-400">Short &bull; Cinematographer</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Documentary & Honors -->
+        <div class="space-y-6">
+          <div class="border-b border-neutral-200 pb-2 flex items-center justify-between text-xs tracking-ultra-wide uppercase font-semibold text-neutral-900">
+            <span>Documentary & Accolades</span>
+            <span class="text-neutral-400 text-[10px]">Impact</span>
+          </div>
+          <ul class="space-y-5 text-neutral-600">
+            <li>
+              <div class="font-medium text-neutral-950">Surzhyk (In Production)</div>
+              <div class="text-xs text-neutral-400">Documentary &bull; Director &bull; Kharkiv Region</div>
+            </li>
+            <li>
+              <div class="font-medium text-neutral-950">Civilian Frontline Volunteer Service</div>
+              <div class="text-xs text-neutral-400">Awarded "Volunteer Courage" & "For Dignity and Patriotism"</div>
+            </li>
+            <li>
+              <div class="font-medium text-neutral-950">Fulbright Fellowship & AFI Conservatory</div>
+              <div class="text-xs text-neutral-400">MFA Cinematography, Los Angeles</div>
+            </li>
+            <li>
+              <div class="font-medium text-neutral-950">Krzysztof Kieślowski Film School Katowice</div>
+              <div class="text-xs text-neutral-400">Cinematography Graduate</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT / COLLABORATION ==================== -->
+    <section id="contact" class="py-24 px-6 sm:px-12 bg-white border-t border-neutral-200">
+      <div class="max-w-4xl mx-auto text-center space-y-8">
+        
+        <p class="text-xs tracking-ultra-wide uppercase text-neutral-400 font-semibold">
+          Representation & Inquiries
+        </p>
+        <h2 class="text-3xl sm:text-4xl font-light tracking-cinema uppercase text-neutral-950">
+          Contact
+        </h2>
+        <p class="max-w-xl mx-auto text-neutral-600 text-sm leading-relaxed">
+          Available for feature films, documentary journeys, commercials, and AI visual direction worldwide.
+        </p>
+
+        <!-- Direct Contact Cards: Polish Phone, Email, Instagram, LinkedIn -->
+        <div class="pt-4 flex flex-wrap justify-center items-center gap-3 sm:gap-4 text-xs">
+          
+          <!-- Email Button -->
+          <button id="copy-email-card" class="flex items-center gap-3 px-5 py-3.5 rounded-sm bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-400 transition-all text-neutral-900 group">
+            <svg class="w-4 h-4 text-neutral-400 group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path>
+            </svg>
+            <span class="font-mono">banasiak.film@gmail.com</span>
+            <span class="text-[9px] uppercase tracking-wider bg-white border border-neutral-200 px-2 py-0.5 rounded text-neutral-500">Copy</span>
+          </button>
+
+          <!-- Poland Phone -->
+          <a href="tel:+48506172787" class="flex items-center gap-3 px-5 py-3.5 rounded-sm bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-400 transition-all text-neutral-900">
+            <svg class="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"></path>
+            </svg>
+            <span class="font-mono">+48 506-172-787</span>
+          </a>
+
+          <!-- Instagram Link -->
+          <a href="https://www.instagram.com/marcinbanasiak?igsi=bHBpeTU2ejc5Mjdq&utm_source=qr" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 px-4 py-3.5 rounded-sm bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-400 transition-all text-neutral-900">
+            <svg class="w-4 h-4 text-neutral-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            <span>Instagram</span>
+          </a>
+
+          <!-- LinkedIn Link -->
+          <a href="https://www.linkedin.com/in/marcin-banasiak-7aa0a5168?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 px-4 py-3.5 rounded-sm bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-400 transition-all text-neutral-900">
+            <svg class="w-4 h-4 text-neutral-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+
+        <!-- Clean Inquiry Form -->
+        <div class="pt-6 max-w-lg mx-auto text-left">
+          <form id="contact-form" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[11px] uppercase tracking-wider text-neutral-500 mb-1">Name</label>
+                <input type="text" required placeholder="Your name" class="w-full bg-white border border-neutral-200 rounded-sm p-3 text-xs text-neutral-900 focus:outline-none focus:border-black transition-colors" />
+              </div>
+              <div>
+                <label class="block text-[11px] uppercase tracking-wider text-neutral-500 mb-1">Email</label>
+                <input type="email" required placeholder="your.email@studio.com" class="w-full bg-white border border-neutral-200 rounded-sm p-3 text-xs text-neutral-900 focus:outline-none focus:border-black transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-neutral-500 mb-1">Project Details</label>
+              <textarea rows="3" required placeholder="Project type, timeline, or collaboration scope..." class="w-full bg-white border border-neutral-200 rounded-sm p-3 text-xs text-neutral-900 focus:outline-none focus:border-black transition-colors"></textarea>
+            </div>
+            <button type="submit" class="w-full py-3.5 bg-black text-white text-xs uppercase tracking-ultra-wide font-medium rounded-sm hover:bg-neutral-800 transition-colors">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-12 px-6 sm:px-12 max-w-7xl mx-auto border-t border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
+    <div>
+      &copy; <span id="current-year"></span> Marcin Banasiak. All rights reserved.
+    </div>
+    <div class="flex items-center space-x-6 tracking-ultra-wide uppercase text-[10px] text-neutral-500">
+      <a href="https://vimeo.com/marcinbanasiak" target="_blank" rel="noopener noreferrer" class="hover:text-black transition-colors">Vimeo</a>
+      <a href="https://www.instagram.com/marcinbanasiak?igsi=bHBpeTU2ejc5Mjdq&utm_source=qr" target="_blank" rel="noopener noreferrer" class="hover:text-black transition-colors">Instagram</a>
+      <a href="https://imdb.com" target="_blank" rel="noopener noreferrer" class="hover:text-black transition-colors">IMDb</a>
+      <a href="https://www.linkedin.com/in/marcin-banasiak-7aa0a5168?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" class="hover:text-black transition-colors">LinkedIn</a>
+    </div>
+  </footer>
+
+  <!-- ==================== VIDEO LIGHTBOX MODAL ==================== -->
+  <div id="project-modal" class="fixed inset-0 z-50 bg-white/95 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 sm:p-8">
+    <div class="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-sm overflow-y-auto border border-neutral-200 shadow-2xl">
+      <!-- Close Button -->
+      <button id="modal-close-btn" class="absolute top-4 right-4 z-30 p-2 text-neutral-500 hover:text-black transition-colors" aria-label="Close modal">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <div id="modal-content" class="p-6 sm:p-10 space-y-6">
+        <!-- Content injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-black text-white text-xs font-mono px-4 py-3 rounded-sm shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-2">
+    <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+    </svg>
+    <span id="toast-message">Copied to clipboard</span>
+  </div>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // Exact Projects Sequence
+    // All video links hosted on Vimeo for flawless playback without cross-origin errors
+    const projects = [
+      {
+        id: 'sin-cielo',
+        title: 'Sin Cielo',
+        role: 'Cinematographer',
+        genre: 'Short',
+        filterGroup: 'short',
+        videoType: 'vimeo',
+        videoId: '1224217224',
+        videoUrl: 'https://vimeo.com/1224217224',
+        thumb: 'https://lh3.googleusercontent.com/d/1iTwbAbE8kbig0FhGrGlL8_FYF90DKeLy',
+        fallbackThumb: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop',
+        description: 'Directed by Jianna Maarten Saada. A haunting, lyrical narrative set along the US-Mexico border borderlands. Grand Jury Prize at Seattle International Film Festival and Bruce Corwin Award at Santa Barbara International Film Festival.'
+      },
+      {
+        id: 'surzhyk',
+        title: 'Surzhyk',
+        role: 'Director',
+        genre: 'Documentary',
+        filterGroup: 'doc-feature',
+        videoType: 'vimeo-url',
+        videoUrl: 'https://vimeo.com/marcinbanasiak/unlistedteaser',
+        thumb: 'https://lh3.googleusercontent.com/d/1t_p1ozZo8lY-rL4w8o5yMohd-tI5bQWP',
+        fallbackThumb: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1200&auto=format&fit=crop',
+        description: 'Documentary following Ukrainian civilians and volunteers living in frontline zones across the Kharkiv region during the war. Accompanied by photo exhibitions at Freedom Games Łódź. Recognized with civilian volunteer medals for courage.'
+      },
+      {
+        id: 'polestar',
+        title: 'Polestar',
+        role: 'Director, AI Artist',
+        genre: 'AI Commercial',
+        filterGroup: 'ai',
+        videoType: 'vimeo',
+        videoId: '1107866042',
+        videoUrl: 'https://vimeo.com/1107866042',
+        thumb: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=1200&auto=format&fit=crop',
+        description: 'AI Commercial exploring silent kinetic elegance, aerodynamic minimalism, and Scandinavian automotive design through custom ComfyUI diffusion pipelines calibrated to anamorphic lenses.'
+      },
+      {
+        id: 'opaque',
+        title: 'Opaque',
+        role: 'Director, AI Artist',
+        genre: 'AI Short',
+        filterGroup: 'ai',
+        videoType: 'vimeo',
+        videoId: '1101939197',
+        videoUrl: 'https://vimeo.com/1101939197',
+        thumb: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop',
+        description: 'An AI Short film exploring perceptual thresholds, shadowy forms, and tactile textures at the border of abstraction.'
+      },
+      {
+        id: 'she-who-walks-between',
+        title: 'She Who Walks Between',
+        role: 'Director, AI Artist',
+        genre: 'AI Short',
+        filterGroup: 'ai',
+        videoType: 'vimeo-url',
+        videoUrl: 'https://vimeo.com/marcinbanasiak',
+        thumb: 'https://lh3.googleusercontent.com/d/10FajKhdMgAQiojdF9_wG9V7YIJgWLa3r',
+        fallbackThumb: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1200&auto=format&fit=crop',
+        description: 'An AI Short exploring mythological archetypes through recursive temporal synthesis, dream logic, and surreal architectural spaces.'
+      },
+      {
+        id: '70-moments',
+        title: '70 Moments',
+        role: 'Director, AI Artist',
+        genre: 'AI Short',
+        filterGroup: 'ai',
+        videoType: 'vimeo',
+        videoId: '1121650161',
+        videoUrl: 'https://vimeo.com/1121650161',
+        thumb: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1200&auto=format&fit=crop',
+        description: 'An experimental AI Short breathing living cinematic motion into seven decades of historical photographs, contemplating collective memory and the passage of time.'
+      },
+      {
+        id: 'candy-ai',
+        title: 'Candy.ai',
+        role: 'Director, AI Artist',
+        genre: 'AI Short',
+        filterGroup: 'ai',
+        videoType: 'vimeo',
+        videoId: '1192984086',
+        videoHash: 'b150ba0bcf',
+        videoUrl: 'https://vimeo.com/1192984086/b150ba0bcf',
+        thumb: 'https://lh3.googleusercontent.com/d/1ccDWtDJ1LhKq2nq6VidmlQojb0VNIhsy',
+        fallbackThumb: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1200&auto=format&fit=crop',
+        description: 'An AI Short exploring digital persona, artificial warmth, and contemporary synthetic portraiture with cinematic lighting.'
+      },
+      {
+        id: 'quests-of-william-wood',
+        title: 'The Quests of William Wood',
+        role: 'Director, AI Artist',
+        genre: 'AI Commercial',
+        filterGroup: 'ai',
+        videoType: 'vimeo-url',
+        videoUrl: 'https://vimeo.com/marcinbanasiak',
+        thumb: 'https://lh3.googleusercontent.com/d/114peClhBG-xZ5yg40seV4cJ4SZEHPhj9',
+        fallbackThumb: 'https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1200&auto=format&fit=crop',
+        description: 'A stylized AI Commercial blending historical narrative textures with fantastical visual discovery.'
+      },
+      {
+        id: 'the-allnighter',
+        title: 'The Allnighter',
+        role: 'Cinematographer',
+        genre: 'Feature Film',
+        filterGroup: 'doc-feature',
+        videoType: 'imdb',
+        videoId: 'vi1003210521',
+        videoUrl: 'https://www.imdb.com/video/vi1003210521/?playlistId=tt6643984&ref_=ext_shr_lnk',
+        thumb: 'https://lh3.googleusercontent.com/d/1aDSzMd5X6MFChkbetV2xh0c5praFnqO6',
+        fallbackThumb: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1200&auto=format&fit=crop',
+        description: 'Feature film directed by Aimee Graham, starring Justine Bateman and David Koechner. Photographed with RED Monstro 8K and anamorphic glass on location in Los Angeles.'
+      },
+      {
+        id: 'maserati-perception',
+        title: 'Maserati – Perception',
+        role: 'Cinematographer',
+        genre: 'Commercial',
+        filterGroup: 'commercial',
+        videoType: 'vimeo',
+        videoId: '387400657',
+        videoUrl: 'https://vimeo.com/387400657',
+        thumb: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop',
+        description: 'Commercial campaign highlighting Italian engineering, dynamic road curves, and speed with tracking camera cranes and high-speed optics.'
+      },
+      {
+        id: 'his-mother',
+        title: 'His Mother',
+        role: 'Cinematographer',
+        genre: 'Short',
+        filterGroup: 'short',
+        videoType: 'vimeo',
+        videoId: '1224217183',
+        videoUrl: 'https://vimeo.com/1224217183',
+        thumb: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1200&auto=format&fit=crop',
+        description: 'Directed by Justyna Mytnik. An intimate drama examining quiet endurance and profound familial love. Official selection at HollyShorts, Rhode Island IFF, and recipient of Filmmaker Award 2020.'
+      },
+      {
+        id: 'skater',
+        title: 'Skater',
+        role: 'Cinematographer',
+        genre: 'Short',
+        filterGroup: 'short',
+        videoType: 'vimeo',
+        videoId: '377210690',
+        videoUrl: 'https://vimeo.com/377210690',
+        thumb: 'https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?q=80&w=1200&auto=format&fit=crop',
+        fallbackThumb: 'https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?q=80&w=1200&auto=format&fit=crop',
+        description: 'A cinematic short trailer capturing street skating dynamism, kinetic camera tracking, urban architecture, and high-energy motion.'
+      },
+      {
+        id: 'eg-amd-ryzen',
+        title: 'Evil Geniuses × AMD Ryzen',
+        role: 'Cinematographer',
+        genre: 'Commercial',
+        filterGroup: 'commercial',
+        videoType: 'vimeo',
+        videoId: '1224217143',
+        videoHash: '1c5ba66193',
+        videoUrl: 'https://vimeo.com/1224217143',
+        thumb: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop',
+        description: 'Esports commercial spot marrying high-speed macro cinematography, precision electronic cues, and competitive adrenaline.'
+      },
+      {
+        id: 'eg-bringing-evil-back',
+        title: "Evil Geniuses – We're Bringing the Evil Back",
+        role: 'Cinematographer',
+        genre: 'Commercial',
+        filterGroup: 'commercial',
+        videoType: 'vimeo',
+        videoId: '1224217106',
+        videoHash: '579f301c7a',
+        videoUrl: 'https://vimeo.com/1224217106',
+        thumb: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop',
+        description: 'Brand launch commercial for the legendary Evil Geniuses gaming organization featuring aggressive moody lighting and player portraits.'
+      },
+      {
+        id: 'eg-xfinity',
+        title: 'Are You Ready? – Evil Geniuses × Xfinity',
+        role: 'Cinematographer',
+        genre: 'Commercial',
+        filterGroup: 'commercial',
+        videoType: 'vimeo',
+        videoId: '1224217041',
+        videoUrl: 'https://vimeo.com/1224217041',
+        thumb: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1200&auto=format&fit=crop',
+        description: 'Commercial spot exploring low-latency connectivity, tactical focus, and stadium esports energy.'
+      },
+      {
+        id: 'when-the-light-of-dawn',
+        title: 'When the Light of Dawn Arises',
+        role: 'Cinematographer',
+        genre: 'Short',
+        filterGroup: 'short',
+        videoType: 'vimeo',
+        videoId: '143265211',
+        videoUrl: 'https://vimeo.com/143265211',
+        thumb: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop',
+        description: 'Award-winning short film created at Krzysztof Kieślowski Film School. Winner of the Jury Prize at Gdynia Film Festival and 12 international festival laurels.'
+      },
+      {
+        id: 'richard',
+        title: 'Richard',
+        role: 'Cinematographer',
+        genre: 'Short',
+        filterGroup: 'short',
+        videoType: 'vimeo-url',
+        videoUrl: 'https://vimeo.com/marcinbanasiak',
+        thumb: 'https://lh3.googleusercontent.com/d/1Y75ZHCmC0jFhiOXGIC3FnMtC8OIbk2PB',
+        fallbackThumb: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop',
+        description: 'Narrative short exploring character solitude and nuanced interior lighting.'
+      },
+      {
+        id: 'luc-motion-trio',
+        title: 'L.U.C & Motion Trio – Iluzji Łąka',
+        role: 'Cinematographer',
+        genre: 'Music Video',
+        filterGroup: 'music',
+        videoType: 'vimeo',
+        videoId: '113272293',
+        videoUrl: 'https://vimeo.com/113272293',
+        thumb: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1200&auto=format&fit=crop',
+        description: 'Music video featuring Ania Rusowicz, blending accordion mastery, surreal theatrical set pieces, and rich anamorphic color palettes.'
+      },
+      {
+        id: 'ten-typ-mes-la-pt-2',
+        title: 'Ten Typ Mes – LA pt. 2',
+        role: 'Cinematographer',
+        genre: 'Music Video',
+        filterGroup: 'music',
+        videoType: 'vimeo',
+        videoId: '1224217302',
+        videoHash: '668df82348',
+        videoUrl: 'https://vimeo.com/1224217302',
+        thumb: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200&auto=format&fit=crop',
+        description: 'Hip-hop music video photographed on 35mm-equivalent optics across Venice Beach, Downtown Los Angeles, and Southern California highways.'
+      },
+      {
+        id: 'ten-typ-mes-god-bless',
+        title: 'Ten Typ Mes – GOD BLESS',
+        role: 'Cinematographer',
+        genre: 'Music Video',
+        filterGroup: 'music',
+        videoType: 'vimeo',
+        videoId: '1224217282',
+        videoHash: '439c37ebc0',
+        videoUrl: 'https://vimeo.com/1224217282',
+        thumb: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1200&auto=format&fit=crop',
+        description: 'Official music video for Polish artist Ten Typ Mes, balancing stark contrast, expressive practical lighting, and urban rhythm.'
+      }
+    ];
+
+    // Explicit list of Vimeo IDs that fetch their thumbnail dynamically via oEmbed
+    // Only includes projects where the thumbnail isn't already supplied via direct Google Drive link
+    const vimeoOembedProjects = [
+      'polestar',
+      'opaque',
+      '70-moments',
+      'maserati-perception',
+      'his-mother',
+      'skater',
+      'eg-amd-ryzen',
+      'eg-bringing-evil-back',
+      'eg-xfinity',
+      'when-the-light-of-dawn',
+      'luc-motion-trio',
+      'ten-typ-mes-la-pt-2',
+      'ten-typ-mes-god-bless'
+    ];
+
+    // --- Render Projects to Gallery Grid ---
+    const galleryGrid = document.getElementById('gallery-grid');
+
+    function renderGallery(filter = 'all') {
+      galleryGrid.innerHTML = '';
+      
+      const filtered = filter === 'all' 
+        ? projects 
+        : projects.filter(p => {
+            if (filter === 'ai') return p.genre.includes('AI');
+            if (filter === 'short') return p.genre === 'Short' || p.genre === 'AI Short';
+            if (filter === 'commercial') return p.genre === 'Commercial' || p.genre === 'AI Commercial';
+            if (filter === 'music') return p.genre === 'Music Video';
+            if (filter === 'doc-feature') return p.genre === 'Documentary' || p.genre === 'Feature Film';
+            return true;
+          });
+
+      filtered.forEach(p => {
+        const item = document.createElement('div');
+        item.className = 'project-card group cursor-pointer flex flex-col';
+        item.onclick = () => openProjectModal(p.id);
+
+        item.innerHTML = `
+          <!-- Thumbnail Frame -->
+          <div class="relative w-full aspect-reel overflow-hidden bg-neutral-100 rounded-sm border border-neutral-200">
+            <img src="${p.thumb}" 
+                 alt="${p.title}" 
+                 loading="lazy"
+                 id="thumb-${p.id}"
+                 class="project-thumb w-full h-full object-cover transition-transform duration-500 ease-out"
+                 onerror="this.onerror=null; if('${p.fallbackThumb}') { this.src='${p.fallbackThumb}'; } else { this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'800\\' height=\\'450\\'><rect fill=\\'%23f0f0f0\\' width=\\'800\\' height=\\'450\\'/><text fill=\\'%23777\\' font-family=\\'sans-serif\\' font-size=\\'18\\' x=\\'50%\\' y=\\'50%\\' text-anchor=\\'middle\\'>${encodeURIComponent(p.title)}</text></svg>'; }" />
+
+            <!-- Hover Play Cue -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-neutral-900/20">
+              <div class="w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center text-black shadow-md transform scale-90 group-hover:scale-100 transition-transform">
+                <svg class="w-4 h-4 ml-0.5 fill-black" viewBox="0 0 24 24">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metadata Under Image -->
+          <div class="pt-3 pb-1 flex flex-col justify-between">
+            <div class="flex items-baseline justify-between text-[11px] font-mono text-neutral-400 mb-0.5">
+              <span>${p.role}</span>
+            </div>
+            <h3 class="text-sm font-medium tracking-tight text-neutral-950 group-hover:text-neutral-600 transition-colors">
+              ${p.title}
+            </h3>
+            <!-- STRICT GENRE SUBTITLE -->
+            <div class="text-[11px] uppercase tracking-wider text-neutral-500 font-normal mt-0.5">
+              ${p.genre}
+            </div>
+          </div>
+        `;
+        galleryGrid.appendChild(item);
+
+        // Fetch official high-res Vimeo thumbnail dynamically for Vimeo items
+        if (vimeoOembedProjects.includes(p.id) && p.videoId) {
+          fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${p.videoId}`)
+            .then(res => res.json())
+            .then(data => {
+              if (data && data.thumbnail_url) {
+                const imgEl = document.getElementById(`thumb-${p.id}`);
+                if (imgEl) imgEl.src = data.thumbnail_url;
+              }
+            })
+            .catch(() => {});
+        }
+      });
+    }
+
+    // --- Filter Buttons Event ---
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('active', 'bg-black', 'text-white', 'border-black');
+          b.classList.add('bg-white', 'text-neutral-600', 'border-neutral-200');
+        });
+        btn.classList.add('active', 'bg-black', 'text-white', 'border-black');
+        btn.classList.remove('bg-white', 'text-neutral-600', 'border-neutral-200');
+        renderGallery(btn.dataset.filter);
+      });
+    });
+
+    // --- Lightbox Modal with Vimeo Video Players ---
+    const modal = document.getElementById('project-modal');
+    const modalContent = document.getElementById('modal-content');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+
+    function openProjectModal(id) {
+      const p = projects.find(item => item.id === id);
+      if (!p) return;
+
+      let playerEmbedHtml = '';
+
+      if (p.videoType === 'vimeo') {
+        const hashParam = p.videoHash ? `?h=${p.videoHash}&` : '?';
+        playerEmbedHtml = `
+          <div class="relative w-full aspect-reel bg-black rounded-sm overflow-hidden border border-neutral-200 shadow-md">
+            <iframe src="https://player.vimeo.com/video/${p.videoId}${hashParam}autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479" 
+                    class="w-full h-full" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    title="${p.title}"
+                    allowfullscreen></iframe>
+          </div>
+        `;
+      } else if (p.videoType === 'imdb') {
+        playerEmbedHtml = `
+          <div class="relative w-full aspect-reel bg-neutral-900 rounded-sm overflow-hidden border border-neutral-200 shadow-md flex items-center justify-center group">
+            <img src="${p.thumb}" onerror="this.src='${p.fallbackThumb}'" class="w-full h-full object-cover opacity-60" alt="${p.title}" />
+            <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+              <a href="${p.videoUrl}" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-yellow-400 text-black font-semibold text-xs uppercase tracking-wider rounded flex items-center gap-2 hover:bg-yellow-300 transition-colors shadow-lg">
+                <svg class="w-4 h-4 fill-black" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Watch Trailer on IMDb
+              </a>
+              <span class="text-xs text-white/80 font-mono mt-3">Full feature starring Justine Bateman & David Koechner</span>
+            </div>
+          </div>
+        `;
+      } else {
+        playerEmbedHtml = `
+          <div class="relative w-full aspect-reel bg-neutral-900 rounded-sm overflow-hidden border border-neutral-200 shadow-md flex items-center justify-center group">
+            <img src="${p.thumb}" onerror="this.src='${p.fallbackThumb}'" class="w-full h-full object-cover opacity-75" alt="${p.title}" />
+            <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+              <a href="${p.videoUrl}" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-white text-black font-semibold text-xs uppercase tracking-wider rounded flex items-center gap-2 hover:bg-neutral-100 transition-colors shadow-lg">
+                <svg class="w-4 h-4 fill-black" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Watch on Vimeo
+              </a>
+              <span class="text-xs text-white/80 font-mono mt-3">Preview & High-Resolution Showcase</span>
+            </div>
+          </div>
+        `;
+      }
+
+      modalContent.innerHTML = `
+        ${playerEmbedHtml}
+
+        <div class="space-y-4 pt-2">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+            <h2 class="text-2xl sm:text-3xl font-light tracking-tight text-neutral-950">
+              ${p.title}
+            </h2>
+            <span class="text-xs font-mono text-neutral-500 uppercase tracking-wider">
+              ${p.genre}
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 p-4 bg-neutral-50 rounded-sm border border-neutral-200 text-xs font-mono">
+            <div>
+              <span class="text-neutral-400 block uppercase tracking-wider mb-0.5">Role</span>
+              <span class="text-neutral-900 font-medium">${p.role}</span>
+            </div>
+            <div>
+              <span class="text-neutral-400 block uppercase tracking-wider mb-0.5">Genre Classification</span>
+              <span class="text-neutral-900 font-medium">${p.genre}</span>
+            </div>
+          </div>
+
+          <div class="text-neutral-600 leading-relaxed text-sm font-normal pt-1">
+            ${p.description}
+          </div>
+
+          <div class="pt-4 border-t border-neutral-200 flex items-center justify-between">
+            <a href="${p.videoUrl}" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-neutral-500 hover:text-black underline transition-colors">
+              Open Original Video Link &nearr;
+            </a>
+            <button onclick="closeModal()" class="px-5 py-2 bg-black text-white text-xs uppercase tracking-wider font-medium rounded-sm hover:bg-neutral-800 transition-colors">
+              Close
+            </button>
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+      }, 10);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.add('opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = 'auto';
+      }, 300);
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+    });
+
+    // --- Clipboard and Toast Alerts ---
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-message');
+    let toastTimer = null;
+
+    function showToast(message) {
+      toastMsg.textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 2400);
+    }
+
+    function copyText(val, label) {
+      const tempInput = document.createElement('textarea');
+      tempInput.value = val;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      showToast(`Copied ${label} to clipboard`);
+    }
+
+    document.getElementById('copy-email-card')?.addEventListener('click', () => {
+      copyText('banasiak.film@gmail.com', 'banasiak.film@gmail.com');
+    });
+    document.getElementById('nav-copy-email')?.addEventListener('click', () => {
+      copyText('banasiak.film@gmail.com', 'banasiak.film@gmail.com');
+    });
+
+    // --- Mobile Menu Toggle ---
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIconOpen = document.getElementById('menu-icon-open');
+    const menuIconClose = document.getElementById('menu-icon-close');
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      if (isOpen) {
+        mobileMenu.classList.add('hidden');
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+      } else {
+        mobileMenu.classList.remove('hidden');
+        menuIconOpen.classList.add('hidden');
+        menuIconClose.classList.remove('hidden');
+      }
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+      });
+    });
+
+    // --- Contact Form ---
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('Thank you! Inquiry transmitted.');
+      e.target.reset();
+    });
+
+    // --- Init ---
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    renderGallery('all');
+  </script>
+</body>
+</html>
