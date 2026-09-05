@@ -199,6 +199,16 @@
       <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
         <!-- Injected via JavaScript -->
       </div>
+
+      <!-- Load More Button Container -->
+      <div id="load-more-container" class="mt-16 text-center hidden">
+        <button id="load-more-btn" class="px-8 py-3.5 border border-neutral-300 hover:border-black rounded-sm text-xs font-medium uppercase tracking-ultra-wide text-neutral-700 hover:text-black transition-all group inline-flex items-center gap-2">
+          <span>More</span>
+          <svg class="w-3.5 h-3.5 transform group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+          </svg>
+        </button>
+      </div>
     </section>
 
     <!-- ==================== BACKGROUND & PHILOSOPHY ==================== -->
@@ -746,12 +756,20 @@
       'ten-typ-mes-god-bless'
     ];
 
+    // Pagination / Row limit state
+    const INITIAL_LIMIT = 9; // 3 rows of 3 columns
+    let activeFilter = 'all';
+    let isExpanded = false;
+
     // --- Render Projects to Gallery Grid ---
     const galleryGrid = document.getElementById('gallery-grid');
+    const loadMoreContainer = document.getElementById('load-more-container');
+    const loadMoreBtn = document.getElementById('load-more-btn');
 
     function renderGallery(filter = 'all') {
       galleryGrid.innerHTML = '';
-      
+      activeFilter = filter;
+
       const filtered = filter === 'all' 
         ? projects 
         : projects.filter(p => {
@@ -763,7 +781,10 @@
             return true;
           });
 
-      filtered.forEach(p => {
+      // Show either the initial 3 rows (9 items) or all items if "More" was clicked
+      const visibleProjects = isExpanded ? filtered : filtered.slice(0, INITIAL_LIMIT);
+
+      visibleProjects.forEach(p => {
         const item = document.createElement('div');
         item.className = 'project-card group cursor-pointer flex flex-col';
         item.onclick = () => openProjectModal(p.id);
@@ -817,7 +838,20 @@
             .catch(() => {});
         }
       });
+
+      // Show/hide the "More" button container based on item count and expansion state
+      if (filtered.length > INITIAL_LIMIT && !isExpanded) {
+        loadMoreContainer.classList.remove('hidden');
+      } else {
+        loadMoreContainer.classList.add('hidden');
+      }
     }
+
+    // "More" button click handler
+    loadMoreBtn.addEventListener('click', () => {
+      isExpanded = true;
+      renderGallery(activeFilter);
+    });
 
     // --- Filter Buttons Event ---
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -829,6 +863,9 @@
         });
         btn.classList.add('active', 'bg-black', 'text-white', 'border-black');
         btn.classList.remove('bg-white', 'text-neutral-600', 'border-neutral-200');
+        
+        // Reset row limit when switching categories
+        isExpanded = false;
         renderGallery(btn.dataset.filter);
       });
     });
