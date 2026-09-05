@@ -58,6 +58,39 @@
     .project-card:hover .project-thumb {
       transform: scale(1.03);
     }
+
+    /* Slower, tasteful cinematic reveal animation */
+    @keyframes cinemaFadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Smooth collapse animation */
+    @keyframes cinemaFadeDown {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+    }
+
+    .cinema-reveal {
+      opacity: 0;
+      animation: cinemaFadeUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .cinema-collapse {
+      animation: cinemaFadeDown 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
   </style>
   <!-- Vimeo Player API -->
   <script src="https://player.vimeo.com/api/player.js"></script>
@@ -200,12 +233,12 @@
         <!-- Injected via JavaScript -->
       </div>
 
-      <!-- Load More Button Container -->
-      <div id="load-more-container" class="mt-16 text-center hidden">
-        <button id="load-more-btn" class="px-8 py-3.5 border border-neutral-300 hover:border-black rounded-sm text-xs font-medium uppercase tracking-ultra-wide text-neutral-700 hover:text-black transition-all group inline-flex items-center gap-2">
-          <span>More</span>
-          <svg class="w-3.5 h-3.5 transform group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+      <!-- Expand / Collapse Button Container -->
+      <div id="load-more-container" class="mt-12 sm:mt-16 text-center hidden">
+        <button id="load-more-btn" class="px-8 py-3.5 border border-neutral-300 hover:border-black rounded-sm text-xs font-medium uppercase tracking-ultra-wide text-neutral-700 hover:text-black transition-all group inline-flex items-center gap-2.5">
+          <span id="load-more-text">More</span>
+          <svg id="load-more-icon" class="w-3.5 h-3.5 transform group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="load-more-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
           </svg>
         </button>
       </div>
@@ -756,101 +789,197 @@
       'ten-typ-mes-god-bless'
     ];
 
-    // Pagination / Row limit state
-    const INITIAL_LIMIT = 9; // 3 rows of 3 columns
+    // State management for category filter and expanded gallery
     let activeFilter = 'all';
     let isExpanded = false;
+
+    // Mobile: exactly 3 projects (3 single-column rows)
+    // Desktop: exactly 9 projects (3 balanced rows of 3 columns)
+    function getResponsiveLimit() {
+      return window.innerWidth < 768 ? 3 : 9;
+    }
+
+    // Filter project items helper
+    function getFilteredList(filter) {
+      if (filter === 'all') return projects;
+      return projects.filter(p => {
+        if (filter === 'ai') return p.genre.includes('AI');
+        if (filter === 'short') return p.genre === 'Short' || p.genre === 'AI Short';
+        if (filter === 'commercial') return p.genre === 'Commercial' || p.genre === 'AI Commercial';
+        if (filter === 'music') return p.genre === 'Music Video';
+        if (filter === 'doc-feature') return p.genre === 'Documentary' || p.genre === 'Feature Film';
+        return true;
+      });
+    }
+
+    // Single card element builder
+    function createProjectCard(p) {
+      const item = document.createElement('div');
+      item.className = 'project-card group cursor-pointer flex flex-col cinema-reveal';
+      item.onclick = () => openProjectModal(p.id);
+
+      item.innerHTML = `
+        <!-- Thumbnail Frame -->
+        <div class="relative w-full aspect-reel overflow-hidden bg-neutral-100 rounded-sm border border-neutral-200">
+          <img src="${p.thumb}" 
+               alt="${p.title}" 
+               loading="lazy"
+               id="thumb-${p.id}"
+               class="project-thumb w-full h-full object-cover transition-transform duration-500 ease-out"
+               onerror="this.onerror=null; if('${p.fallbackThumb}') { this.src='${p.fallbackThumb}'; } else { this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'800\\' height=\\'450\\'><rect fill=\\'%23f0f0f0\\' width=\\'800\\' height=\\'450\\'/><text fill=\\'%23777\\' font-family=\\'sans-serif\\' font-size=\\'18\\' x=\\'50%\\' y=\\'50%\\' text-anchor=\\'middle\\'>${encodeURIComponent(p.title)}</text></svg>'; }" />
+
+          <!-- Hover Play Cue -->
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-neutral-900/20">
+            <div class="w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center text-black shadow-md transform scale-90 group-hover:scale-100 transition-transform">
+              <svg class="w-4 h-4 ml-0.5 fill-black" viewBox="0 0 24 24">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metadata Under Image -->
+        <div class="pt-3 pb-1 flex flex-col justify-between">
+          <div class="flex items-baseline justify-between text-[11px] font-mono text-neutral-400 mb-0.5">
+            <span>${p.role}</span>
+          </div>
+          <h3 class="text-sm font-medium tracking-tight text-neutral-950 group-hover:text-neutral-600 transition-colors">
+            ${p.title}
+          </h3>
+          <div class="text-[11px] uppercase tracking-wider text-neutral-500 font-normal mt-0.5">
+            ${p.genre}
+          </div>
+        </div>
+      `;
+
+      return item;
+    }
+
+    // Trigger oEmbed fetch for Vimeo items
+    function loadVimeoThumbnail(p) {
+      if (vimeoOembedProjects.includes(p.id) && p.videoId) {
+        fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${p.videoId}`)
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.thumbnail_url) {
+              const imgEl = document.getElementById(`thumb-${p.id}`);
+              if (imgEl) imgEl.src = data.thumbnail_url;
+            }
+          })
+          .catch(() => {});
+      }
+    }
 
     // --- Render Projects to Gallery Grid ---
     const galleryGrid = document.getElementById('gallery-grid');
     const loadMoreContainer = document.getElementById('load-more-container');
     const loadMoreBtn = document.getElementById('load-more-btn');
+    const loadMoreText = document.getElementById('load-more-text');
+    const loadMoreIcon = document.getElementById('load-more-icon');
+    const loadMoreIconPath = document.getElementById('load-more-icon-path');
+
+    function updateToggleButtonUI() {
+      if (isExpanded) {
+        loadMoreText.textContent = 'Less';
+        // Upward chevron
+        loadMoreIconPath.setAttribute('d', 'M4.5 15.75l7.5-7.5 7.5 7.5');
+        loadMoreIcon.classList.remove('group-hover:translate-y-0.5');
+        loadMoreIcon.classList.add('group-hover:-translate-y-0.5');
+      } else {
+        loadMoreText.textContent = 'More';
+        // Downward chevron
+        loadMoreIconPath.setAttribute('d', 'M19.5 8.25l-7.5 7.5-7.5-7.5');
+        loadMoreIcon.classList.add('group-hover:translate-y-0.5');
+        loadMoreIcon.classList.remove('group-hover:-translate-y-0.5');
+      }
+    }
 
     function renderGallery(filter = 'all') {
       galleryGrid.innerHTML = '';
       activeFilter = filter;
+      isExpanded = false;
+      updateToggleButtonUI();
 
-      const filtered = filter === 'all' 
-        ? projects 
-        : projects.filter(p => {
-            if (filter === 'ai') return p.genre.includes('AI');
-            if (filter === 'short') return p.genre === 'Short' || p.genre === 'AI Short';
-            if (filter === 'commercial') return p.genre === 'Commercial' || p.genre === 'AI Commercial';
-            if (filter === 'music') return p.genre === 'Music Video';
-            if (filter === 'doc-feature') return p.genre === 'Documentary' || p.genre === 'Feature Film';
-            return true;
-          });
+      const filtered = getFilteredList(filter);
+      const limit = getResponsiveLimit();
+      const visibleProjects = filtered.slice(0, limit);
 
-      // Show either the initial 3 rows (9 items) or all items if "More" was clicked
-      const visibleProjects = isExpanded ? filtered : filtered.slice(0, INITIAL_LIMIT);
-
-      visibleProjects.forEach(p => {
-        const item = document.createElement('div');
-        item.className = 'project-card group cursor-pointer flex flex-col';
-        item.onclick = () => openProjectModal(p.id);
-
-        item.innerHTML = `
-          <!-- Thumbnail Frame -->
-          <div class="relative w-full aspect-reel overflow-hidden bg-neutral-100 rounded-sm border border-neutral-200">
-            <img src="${p.thumb}" 
-                 alt="${p.title}" 
-                 loading="lazy"
-                 id="thumb-${p.id}"
-                 class="project-thumb w-full h-full object-cover transition-transform duration-500 ease-out"
-                 onerror="this.onerror=null; if('${p.fallbackThumb}') { this.src='${p.fallbackThumb}'; } else { this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'800\\' height=\\'450\\'><rect fill=\\'%23f0f0f0\\' width=\\'800\\' height=\\'450\\'/><text fill=\\'%23777\\' font-family=\\'sans-serif\\' font-size=\\'18\\' x=\\'50%\\' y=\\'50%\\' text-anchor=\\'middle\\'>${encodeURIComponent(p.title)}</text></svg>'; }" />
-
-            <!-- Hover Play Cue -->
-            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-neutral-900/20">
-              <div class="w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center text-black shadow-md transform scale-90 group-hover:scale-100 transition-transform">
-                <svg class="w-4 h-4 ml-0.5 fill-black" viewBox="0 0 24 24">
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Metadata Under Image -->
-          <div class="pt-3 pb-1 flex flex-col justify-between">
-            <div class="flex items-baseline justify-between text-[11px] font-mono text-neutral-400 mb-0.5">
-              <span>${p.role}</span>
-            </div>
-            <h3 class="text-sm font-medium tracking-tight text-neutral-950 group-hover:text-neutral-600 transition-colors">
-              ${p.title}
-            </h3>
-            <!-- STRICT GENRE SUBTITLE -->
-            <div class="text-[11px] uppercase tracking-wider text-neutral-500 font-normal mt-0.5">
-              ${p.genre}
-            </div>
-          </div>
-        `;
+      visibleProjects.forEach((p, idx) => {
+        const item = createProjectCard(p);
+        item.style.animationDelay = `${idx * 60}ms`;
         galleryGrid.appendChild(item);
-
-        // Fetch official high-res Vimeo thumbnail dynamically for Vimeo items
-        if (vimeoOembedProjects.includes(p.id) && p.videoId) {
-          fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${p.videoId}`)
-            .then(res => res.json())
-            .then(data => {
-              if (data && data.thumbnail_url) {
-                const imgEl = document.getElementById(`thumb-${p.id}`);
-                if (imgEl) imgEl.src = data.thumbnail_url;
-              }
-            })
-            .catch(() => {});
-        }
+        loadVimeoThumbnail(p);
       });
 
-      // Show/hide the "More" button container based on item count and expansion state
-      if (filtered.length > INITIAL_LIMIT && !isExpanded) {
+      // Show the button if there are more projects than the initial row limit
+      if (filtered.length > limit) {
         loadMoreContainer.classList.remove('hidden');
       } else {
         loadMoreContainer.classList.add('hidden');
       }
     }
 
-    // "More" button click handler
+    // "More" / "Less" Toggle Handler with graceful animation & viewport positioning
+    let isTransitioning = false;
+
     loadMoreBtn.addEventListener('click', () => {
-      isExpanded = true;
-      renderGallery(activeFilter);
+      if (isTransitioning) return;
+      const filtered = getFilteredList(activeFilter);
+      const limit = getResponsiveLimit();
+
+      if (!isExpanded) {
+        // --- EXPAND ("More") ---
+        const currentRenderedCount = galleryGrid.children.length;
+        const remainingProjects = filtered.slice(currentRenderedCount);
+
+        remainingProjects.forEach((p, idx) => {
+          const item = createProjectCard(p);
+          // Slower, graceful cascade
+          item.style.animationDelay = `${idx * 80}ms`;
+          galleryGrid.appendChild(item);
+          loadVimeoThumbnail(p);
+        });
+
+        isExpanded = true;
+        updateToggleButtonUI();
+      } else {
+        // --- COLLAPSE ("Less") ---
+        isTransitioning = true;
+        const children = Array.from(galleryGrid.children);
+        const itemsToRemove = children.slice(limit);
+
+        // Animate extra cards sliding out gracefully
+        itemsToRemove.forEach((card, idx) => {
+          card.classList.remove('cinema-reveal');
+          card.classList.add('cinema-collapse');
+          card.style.animationDelay = `${idx * 30}ms`;
+        });
+
+        // Smoothly bring the user back to the top of the gallery section
+        const workSection = document.getElementById('work');
+        const targetScroll = workSection.getBoundingClientRect().top + window.pageYOffset - 90;
+        if (window.pageYOffset > targetScroll) {
+          window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+        }
+
+        setTimeout(() => {
+          itemsToRemove.forEach(card => card.remove());
+          isExpanded = false;
+          updateToggleButtonUI();
+          isTransitioning = false;
+        }, 450);
+      }
+    });
+
+    // Handle screen resize to dynamically adjust between mobile & desktop pagination
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (!isExpanded) {
+          renderGallery(activeFilter);
+        }
+      }, 200);
     });
 
     // --- Filter Buttons Event ---
@@ -864,8 +993,6 @@
         btn.classList.add('active', 'bg-black', 'text-white', 'border-black');
         btn.classList.remove('bg-white', 'text-neutral-600', 'border-neutral-200');
         
-        // Reset row limit when switching categories
-        isExpanded = false;
         renderGallery(btn.dataset.filter);
       });
     });
