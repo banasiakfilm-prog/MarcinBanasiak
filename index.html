@@ -28,7 +28,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400;1,6..72,700&display=swap" rel="stylesheet">
 
   <style>
     /* Clean minimal scrollbar */
@@ -165,26 +165,460 @@
     <!-- ==================== HERO / AI SHOWREEL ==================== -->
     <section id="showreel" class="pt-28 sm:pt-36 pb-16 px-6 sm:px-12 max-w-7xl mx-auto">
       
-      <!-- Festival Laurels Banner -->
-      <div class="w-full flex items-center justify-center gap-8 sm:gap-12 mb-10 overflow-x-auto no-scrollbar py-2 opacity-90 mix-blend-multiply grayscale hover:grayscale-0 transition-all duration-700">
-        <img src="https://raw.githubusercontent.com/banasiakfilm-prog/MarcinBanasiak/main/images/image_16c609.png" alt="Seattle International Film Festival & Palm Springs ShortFest Laurels" class="h-16 sm:h-20 w-auto object-contain flex-shrink-0" />
-        <img src="https://raw.githubusercontent.com/banasiakfilm-prog/MarcinBanasiak/main/images/festiwal-polskich-film-w-fabularnych-najlepszy-film-2012.png" alt="Festiwal Polskich Filmów Fabularnych 2012 Laurel" class="h-16 sm:h-20 w-auto object-contain flex-shrink-0" />
-        <img src="https://raw.githubusercontent.com/banasiakfilm-prog/MarcinBanasiak/main/images/image_16c8c9.png" alt="Austin Arthouse FF & Panoramica Independent FF Laurels" class="h-14 sm:h-16 w-auto object-contain flex-shrink-0" />
-        <img src="https://raw.githubusercontent.com/banasiakfilm-prog/MarcinBanasiak/main/images/image_16c926.png" alt="Dances With Films Official Selection Laurel" class="h-16 sm:h-20 w-auto object-contain flex-shrink-0" />
+      <!-- Festival Laurels Banner (Pure SVG & CSS to replace broken/text image files) -->
+      <div class="w-full flex items-center justify-start gap-3 sm:gap-5 mb-14 overflow-x-auto no-scrollbar py-4 px-2 opacity-90 transition-opacity duration-700 hover:opacity-100 snap-x snap-mandatory" style="-webkit-overflow-scrolling: touch;">
+        
+        <!-- Laurel 1: Seattle Int'l -->
+        <div class="flex items-center justify-center gap-0.5 group cursor-default flex-shrink-0 snap-center">
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 transition-transform duration-700 group-hover:-rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+          <div class="flex flex-col items-center justify-center text-center w-[95px] sm:w-[115px]">
+             <span class="text-[5.5px] sm:text-[6.5px] uppercase tracking-[0.25em] font-semibold text-neutral-500 mb-0.5 group-hover:text-neutral-900 transition-colors">Best Narrative Short</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Seattle Int'l</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Film Festival</span>
+             <span class="text-[5.5px] sm:text-[6.5px] tracking-[0.2em] font-semibold text-neutral-500 mt-0.5 group-hover:text-neutral-900 transition-colors">2019</span>
+          </div>
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 scale-x-[-1] transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+        </div>
+
+        <!-- Laurel 2: Palm Springs -->
+        <div class="flex items-center justify-center gap-0.5 group cursor-default flex-shrink-0 snap-center">
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 transition-transform duration-700 group-hover:-rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+          <div class="flex flex-col items-center justify-center text-center w-[95px] sm:w-[115px]">
+             <span class="text-[5.5px] sm:text-[6.5px] uppercase tracking-[0.25em] font-semibold text-neutral-500 mb-0.5 group-hover:text-neutral-900 transition-colors">Young Cineastes Award</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Palm Springs</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">ShortFest</span>
+             <span class="text-[5.5px] sm:text-[6.5px] tracking-[0.2em] font-semibold text-neutral-500 mt-0.5 group-hover:text-neutral-900 transition-colors">2018</span>
+          </div>
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 scale-x-[-1] transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+        </div>
+
+        <!-- Laurel 3: LA Int'l -->
+        <div class="flex items-center justify-center gap-0.5 group cursor-default flex-shrink-0 snap-center">
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 transition-transform duration-700 group-hover:-rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+          <div class="flex flex-col items-center justify-center text-center w-[95px] sm:w-[115px]">
+             <span class="text-[5.5px] sm:text-[6.5px] uppercase tracking-[0.25em] font-semibold text-neutral-500 mb-0.5 group-hover:text-neutral-900 transition-colors">Best Drama Short</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Los Angeles Int'l</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Film Festival</span>
+             <span class="text-[5.5px] sm:text-[6.5px] tracking-[0.2em] font-semibold text-neutral-500 mt-0.5 group-hover:text-neutral-900 transition-colors">2019</span>
+          </div>
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 scale-x-[-1] transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+        </div>
+
+        <!-- Laurel 4: Ivy Film -->
+        <div class="flex items-center justify-center gap-0.5 group cursor-default flex-shrink-0 snap-center">
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 transition-transform duration-700 group-hover:-rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+          <div class="flex flex-col items-center justify-center text-center w-[95px] sm:w-[115px]">
+             <span class="text-[5.5px] sm:text-[6.5px] uppercase tracking-[0.25em] font-semibold text-neutral-500 mb-0.5 group-hover:text-neutral-900 transition-colors">Grand Jury Prize</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Ivy Film</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Festival</span>
+             <span class="text-[5.5px] sm:text-[6.5px] tracking-[0.2em] font-semibold text-neutral-500 mt-0.5 group-hover:text-neutral-900 transition-colors">2018</span>
+          </div>
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 scale-x-[-1] transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+        </div>
+
+        <!-- Laurel: Festiwal Polskich Filmów Fabularnych -->
+        <div class="flex items-center justify-center gap-0.5 group cursor-default flex-shrink-0 snap-center">
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 transition-transform duration-700 group-hover:-rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+          <div class="flex flex-col items-center justify-center text-center w-[95px] sm:w-[115px]">
+             <span class="text-[5.5px] sm:text-[6.5px] uppercase tracking-[0.25em] font-semibold text-neutral-500 mb-0.5 group-hover:text-neutral-900 transition-colors">Najlepszy Film</span>
+             <span class="text-[7.5px] sm:text-[8.5px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Festiwal Polskich</span>
+             <span class="text-[7.5px] sm:text-[8.5px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Filmów Fabularnych</span>
+             <span class="text-[4.5px] sm:text-[5px] uppercase tracking-[0.1em] font-medium text-neutral-400 mt-0.5 group-hover:text-neutral-700 transition-colors">Konkurs Młodego Kina Polskiego</span>
+             <span class="text-[5.5px] sm:text-[6.5px] tracking-[0.2em] font-semibold text-neutral-500 mt-0.5 group-hover:text-neutral-900 transition-colors">2012</span>
+          </div>
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 scale-x-[-1] transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+        </div>
+
+        <!-- Laurel 5: Cork Int'l -->
+        <div class="flex items-center justify-center gap-0.5 group cursor-default flex-shrink-0 snap-center">
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 transition-transform duration-700 group-hover:-rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+          <div class="flex flex-col items-center justify-center text-center w-[95px] sm:w-[115px]">
+             <span class="text-[5.5px] sm:text-[6.5px] uppercase tracking-[0.25em] font-semibold text-neutral-500 mb-0.5 group-hover:text-neutral-900 transition-colors">Official Selection</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Cork Int'l</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Film Festival</span>
+             <span class="text-[5.5px] sm:text-[6.5px] tracking-[0.2em] font-semibold text-neutral-500 mt-0.5 group-hover:text-neutral-900 transition-colors">2019</span>
+          </div>
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 scale-x-[-1] transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+        </div>
+
+        <!-- Laurel 6: Brussels Short -->
+        <div class="flex items-center justify-center gap-0.5 group cursor-default flex-shrink-0 snap-center">
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 transition-transform duration-700 group-hover:-rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+          <div class="flex flex-col items-center justify-center text-center w-[95px] sm:w-[115px]">
+             <span class="text-[5.5px] sm:text-[6.5px] uppercase tracking-[0.25em] font-semibold text-neutral-500 mb-0.5 group-hover:text-neutral-900 transition-colors">Official Selection</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Brussels Short</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Film Festival</span>
+             <span class="text-[5.5px] sm:text-[6.5px] tracking-[0.2em] font-semibold text-neutral-500 mt-0.5 group-hover:text-neutral-900 transition-colors">2018</span>
+          </div>
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 scale-x-[-1] transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+        </div>
+
+        <!-- Laurel 7: Austin Arthouse Cinematography -->
+        <div class="flex items-center justify-center gap-0.5 group cursor-default flex-shrink-0 snap-center">
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 transition-transform duration-700 group-hover:-rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+          <div class="flex flex-col items-center justify-center text-center w-[95px] sm:w-[115px]">
+             <span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest text-neutral-800 mb-0.5">Nominee</span>
+             <span class="text-[5px] sm:text-[6px] uppercase tracking-[0.15em] font-semibold text-neutral-500 mb-0.5 group-hover:text-neutral-900 transition-colors">Best Cinematography</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Austin Arthouse FF</span>
+             <span class="text-[5.5px] sm:text-[6.5px] tracking-[0.2em] font-semibold text-neutral-500 mt-0.5 group-hover:text-neutral-900 transition-colors">2019</span>
+          </div>
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 scale-x-[-1] transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+        </div>
+
+        <!-- Laurel 8: Austin Arthouse Director -->
+        <div class="flex items-center justify-center gap-0.5 group cursor-default flex-shrink-0 snap-center">
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 transition-transform duration-700 group-hover:-rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+          <div class="flex flex-col items-center justify-center text-center w-[95px] sm:w-[115px]">
+             <span class="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest text-neutral-800 mb-0.5">Kubrick Award</span>
+             <span class="text-[5px] sm:text-[6px] uppercase tracking-[0.15em] font-semibold text-neutral-500 mb-0.5 group-hover:text-neutral-900 transition-colors">Best Director</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Austin Arthouse FF</span>
+             <span class="text-[5.5px] sm:text-[6.5px] tracking-[0.2em] font-semibold text-neutral-500 mt-0.5 group-hover:text-neutral-900 transition-colors">2019</span>
+          </div>
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 scale-x-[-1] transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+        </div>
+
+        <!-- Laurel 9: Panoramica -->
+        <div class="flex items-center justify-center gap-0.5 group cursor-default flex-shrink-0 snap-center">
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 transition-transform duration-700 group-hover:-rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+          <div class="flex flex-col items-center justify-center text-center w-[95px] sm:w-[115px]">
+             <span class="text-[5.5px] sm:text-[6.5px] uppercase tracking-[0.25em] font-semibold text-neutral-500 mb-0.5 group-hover:text-neutral-900 transition-colors">Official Selection</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Panoramica</span>
+             <span class="text-[7.5px] sm:text-[8px] font-serif uppercase leading-tight text-neutral-900 tracking-wider">Independent Film Festival</span>
+             <span class="text-[5.5px] sm:text-[6.5px] tracking-[0.2em] font-semibold text-neutral-500 mt-0.5 group-hover:text-neutral-900 transition-colors">2019</span>
+          </div>
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 scale-x-[-1] transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+        </div>
+
+        <!-- Laurel 10: Buried Alive -->
+        <div class="flex items-center justify-center gap-0.5 group cursor-default flex-shrink-0 snap-center">
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 transition-transform duration-700 group-hover:-rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+          <div class="flex flex-col items-center justify-center text-center w-[95px] sm:w-[115px]">
+             <span class="text-[5.5px] sm:text-[6.5px] uppercase tracking-[0.25em] font-semibold text-neutral-500 mb-0.5 group-hover:text-neutral-900 transition-colors">Official Selection</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Buried Alive</span>
+             <span class="text-[7.5px] sm:text-[8px] font-serif uppercase leading-tight text-neutral-900 tracking-wider">Horror Film Festival</span>
+             <span class="text-[5.5px] sm:text-[6.5px] tracking-[0.2em] font-semibold text-neutral-500 mt-0.5 group-hover:text-neutral-900 transition-colors">2019</span>
+          </div>
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 scale-x-[-1] transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+        </div>
+
+        <!-- Laurel 11: Dances With Films -->
+        <div class="flex items-center justify-center gap-0.5 group cursor-default flex-shrink-0 snap-center pr-4">
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 transition-transform duration-700 group-hover:-rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+          <div class="flex flex-col items-center justify-center text-center w-[95px] sm:w-[115px]">
+             <span class="text-[5.5px] sm:text-[6.5px] uppercase tracking-[0.25em] font-semibold text-neutral-500 mb-0.5 group-hover:text-neutral-900 transition-colors">Official Selection</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Dances With</span>
+             <span class="text-[9px] sm:text-[10px] font-serif font-bold uppercase leading-tight text-neutral-900 tracking-wider">Films</span>
+             <span class="text-[5.5px] sm:text-[6.5px] tracking-[0.2em] font-semibold text-neutral-500 mt-0.5 group-hover:text-neutral-900 transition-colors">2019</span>
+          </div>
+          <svg class="w-7 sm:w-9 h-auto text-neutral-800 scale-x-[-1] transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-105" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M 40 95 C 20 80, 10 50, 25 5 L 23 4 C 8 50, 18 80, 41 97 Z" />
+            <path d="M 32 80 C 15 80, 15 65, 15 65 C 15 65, 25 60, 31 72 Z" />
+            <path d="M 26 65 C 10 65, 10 50, 10 50 C 10 50, 20 45, 26 57 Z" />
+            <path d="M 22 50 C 5 50, 5 35, 5 35 C 5 35, 15 30, 22 42 Z" />
+            <path d="M 21 35 C 5 35, 5 20, 5 20 C 5 20, 15 15, 21 27 Z" />
+            <path d="M 23 20 C 10 20, 10 5, 10 5 C 10 5, 20 5, 24 15 Z" />
+            <path d="M 36 84 C 45 75, 45 60, 45 60 C 45 60, 35 60, 33 74 Z" />
+            <path d="M 30 69 C 40 60, 40 45, 40 45 C 40 45, 30 45, 27 59 Z" />
+            <path d="M 26 54 C 36 45, 36 30, 36 30 C 36 30, 26 30, 23 44 Z" />
+            <path d="M 24 39 C 34 30, 34 15, 34 15 C 34 15, 24 15, 22 29 Z" />
+          </svg>
+        </div>
+
       </div>
 
       <!-- Reel Title Header -->
-      <div class="flex flex-col mb-6">
+      <div class="flex flex-col mb-6 mt-4">
         <h1 class="text-xl sm:text-3xl font-light tracking-cinema uppercase text-neutral-900">
           AI Showreel
         </h1>
       </div>
 
-      <!-- Clean Widescreen Video Embed Frame -->
+      <!-- Clean Widescreen Video Embed Frame (Properly closed) -->
       <div class="relative w-full aspect-reel bg-neutral-950 rounded-sm overflow-hidden shadow-xl border border-neutral-200">
         <iframe src="https://player.vimeo.com/video/1142411923?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
                 class="absolute inset-0 w-full h-full"
                 frameborder="0" 
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
                 referrerpolicy="strict-origin-when-cross-origin" 
-                title="Marcin Banasiak AI
+                title="Marcin Banasiak AI Showreel"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- Javascript for mobile menu toggling -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIconOpen = document.getElementById('menu-icon-open');
+      const menuIconClose = document.getElementById('menu-icon-close');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+
+      function toggleMenu() {
+        mobileMenu.classList.toggle('hidden');
+        menuIconOpen.classList.toggle('hidden');
+        menuIconClose.classList.toggle('hidden');
+      }
+
+      menuBtn.addEventListener('click', toggleMenu);
+      
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', toggleMenu);
+      });
+    });
+  </script>
+</body>
+</html>
